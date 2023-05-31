@@ -5,7 +5,7 @@ using namespace std;
 
 void reverse(vector<int>& S, int start, int stop) {
     if (start < stop - 1) {
-        // swap especializado en tiempo constanta: O(1)
+        // swap especializado en tiempo constante: O(1)
         swap(S[start], S[stop - 1]); 
         reverse(S, start + 1, stop - 1);
     }

@@ -22,7 +22,7 @@ long long fibonacci(int n) {
 
 int main() {
     int n = 10;
-    memo.resize(n + 1, -1);  // Inicialuza memo en -1
+    memo.resize(n + 1, -1);  // Inicializa memo en -1
 
     long long result = fibonacci(n);
     std::cout << "El F(" << n << ") número de Fibonacci es: " << result << std::endl;
