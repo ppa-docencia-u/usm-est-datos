@@ -9,7 +9,7 @@ private:
         int next;  // Index del next nodeen el array
     };
 
-    Node* nodeList;  // Array almacena los nodos de linked list 
+    Node* nodeList;  // Array almacena los nodos de la lista enlazada 
     int capacity;    // Capacidad del array
     int head;        // Index del nodo head
     int free;        // Index del primer nodo libre
@@ -23,9 +23,10 @@ public:
         capacity = listCapacity;
         nodeList = new Node[capacity];
         head = -1;  // List esta inicialmente vacia
-        free = 0;   // Primer nodo libre en el array
+        free = 0;   // Index primer nodo libre en el array inicialmente
 
-        // Initialize each node's next pointer to point to the next node in the array
+        // Inicializa el puntero next de cada nodo en el array
+        // para apuntar al siguiente nodo en array
         for (int i = 0; i < capacity - 1; ++i) {
             nodeList[i].next = i + 1;
         }
@@ -94,7 +95,7 @@ public:
 };
 
 int main() {
-    LinkedList<int> list(5);
+    LinkedList<int> list(5); // Lista con capacidad 5, usualmente se usa 30 o 40 
 
     list.insertAtBeginning(10);
     list.insertAtBeginning(20);

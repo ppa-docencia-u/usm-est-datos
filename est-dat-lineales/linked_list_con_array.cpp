@@ -15,7 +15,8 @@ public:
     DynamicArray()
     {
         this->size_ = 0;
-        this->max_ = 5;
+        // Usualmente se usa alrededor de 30 o 40, en este caso 5 es para probar el código
+        this->max_ = 5; 
         this->arrayholder_ = new int[5];
     }
 
@@ -63,7 +64,7 @@ public:
 int main(int argc, char **argv)
 {
     DynamicArray darray;
-    vector<int> varray;
+    //vector<int> varray;
 
     for (size_t i = 0; i <= 15; i++)
     {
@@ -79,7 +80,7 @@ int main(int argc, char **argv)
 
     cout << "Tamaño del arreglo: " << darray.size() << endl;
     cout << "darray = ";
-    for (size_t i = 0; i < 15; i++)
+    for (size_t i = 0; i <= 15; i++)
     {
        cout << darray[i] << " ";
     }
