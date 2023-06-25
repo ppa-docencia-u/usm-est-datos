@@ -2,7 +2,7 @@
 #include <queue>
 using namespace std;
 
-// Node structure for the binary tree
+// Estructura del nodo del árbol binario 
 struct Node {
     int data;
     Node* left;
@@ -15,7 +15,7 @@ struct Node {
     }
 };
 
-// Binary tree class
+// Clase BinaryTree que representa un árbol binario
 class BinaryTree {
 private:
     Node* root;
@@ -25,12 +25,12 @@ public:
         root = nullptr;
     }
 
-    // Insert a node into the binary tree
+    // Método para insertar un valor en el árbol binario
     void insert(int value) {
         root = insertRecursive(root, value);
     }
 
-    // Helper function to recursively insert a node
+    // Función auxiliar para insertar recursivamente un nodo
     Node* insertRecursive(Node* current, int value) {
         if (current == nullptr) {
             return new Node(value);
@@ -45,12 +45,12 @@ public:
         return current;
     }
 
-    // Search for a value in the binary tree
+    // Buscar un valor en el árbol binario
     bool search(int value) {
         return searchRecursive(root, value);
     }
 
-    // Helper function to recursively search for a value
+    // Función auxiliar para buscar recursivamente un valor
     bool searchRecursive(Node* current, int value) {
         if (current == nullptr) {
             return false;
@@ -65,13 +65,13 @@ public:
         }
     }
 
-    // Perform an inorder traversal of the binary tree
+    // Realiza recorrido en orden simétrico (Inorder) del árbol binario
     void inorderTraversal() {
         inorderRecursive(root);
         cout << endl;
     }
 
-    // Helper function to recursively perform an inorder traversal
+    // Función auxiliar para realizar recursivamente un recorrido en orden simétrico
     void inorderRecursive(Node* current) {
         if (current != nullptr) {
             inorderRecursive(current->left);
@@ -80,13 +80,13 @@ public:
         }
     }
 
-    // Perform a preorder traversal of the binary tree
+    // Realiza recorrido en orden previo (Preorder) del árbol binario
     void preorderTraversal() {
         preorderRecursive(root);
         cout << endl;
     }
 
-    // Helper function to recursively perform a preorder traversal
+    // Función auxiliar para realizar recursivamente un recorrido en orden previo
     void preorderRecursive(Node* current) {
         if (current != nullptr) {
             cout << current->data << " ";
@@ -95,13 +95,13 @@ public:
         }
     }
 
-    // Perform a postorder traversal of the binary tree
+    // Realiza recorrido en orden posterior (Postorder) del árbol binario
     void postorderTraversal() {
         postorderRecursive(root);
         cout << endl;
     }
 
-    // Helper function to recursively perform a postorder traversal
+    // Función auxiliar para realizar recursivamente un recorrido en orden posterior
     void postorderRecursive(Node* current) {
         if (current != nullptr) {
             postorderRecursive(current->left);
@@ -110,7 +110,7 @@ public:
         }
     }
 
-    // Perform a level order traversal of the binary tree
+    // Realiza recorrido en orden de nivel (Level Order) del árbol binario
     void levelOrderTraversal() {
         if (root == nullptr) {
             return;
@@ -146,23 +146,23 @@ int main() {
     binaryTree.insert(60);
     binaryTree.insert(80);
 
-    cout << "Inorder Traversal: ";
+    cout << "Recorrido en orden simétrico (Inorder Traversal): ";
     binaryTree.inorderTraversal();
 
-    cout << "Preorder Traversal: ";
+    cout << "Recorrido en orden previo (Preorder Traversal): ";
     binaryTree.preorderTraversal();
 
-    cout << "Postorder Traversal: ";
+    cout << "Recorrido en orden posterior (Postorder Traversal): ";
     binaryTree.postorderTraversal();
 
-    cout << "Level Order Traversal: ";
+    cout << "Recorrido en orden de nivel (Level Order Traversal): ";
     binaryTree.levelOrderTraversal();
 
     int value = 40;
-    cout << "Search " << value << ": " << (binaryTree.search(value) ? "Found" : "Not Found") << endl;
+    cout << "Buscando " << value << ": " << (binaryTree.search(value) ? "Encontrado" : "No Encontrado") << endl;
 
     value = 90;
-    cout << "Search " << value << ": " << (binaryTree.search(value) ? "Found" : "Not Found") << endl;
+    cout << "Buscando " << value << ": " << (binaryTree.search(value) ? "Encontrado" : "No Encontrado") << endl;
 
     return 0;
 }

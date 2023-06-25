@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-// B-tree node
+// Nodo del árbol B
 class BTreeNode {
     int *keys;
-    int t;
+    int t; // Grado mínimo (define el rango para el número de claves)
     BTreeNode **childPointers;
     int numKeys;
     bool isLeaf;
@@ -15,13 +15,14 @@ public:
     void splitChild(int i, BTreeNode *y);
     void traverse();
 
-    friend class BTree;
+    // Para proporcionar acceso a la clase principal que representa la estructura de datos
+    friend class BTree; // Declara a BTree como una clase amiga para que pueda acceder a los miembros privados de BTreeNode
 };
 
 // B-tree
 class BTree {
     BTreeNode *root;
-    int t;
+    int t; // Grado mínimo (define el rango para el número de claves)
 
 public:
     BTree(int t);
@@ -29,7 +30,7 @@ public:
     void traverse();
 };
 
-// Constructor for B-tree node
+// Constructor para inicializar un nodo B-tree
 BTreeNode::BTreeNode(int t, bool isLeaf) {
     this->t = t;
     this->isLeaf = isLeaf;
@@ -39,7 +40,7 @@ BTreeNode::BTreeNode(int t, bool isLeaf) {
     numKeys = 0;
 }
 
-// Traverse the B-tree
+// Recorre el árbol B
 void BTreeNode::traverse() {
     int i;
     for (i = 0; i < numKeys; i++) {
@@ -52,13 +53,13 @@ void BTreeNode::traverse() {
         childPointers[i]->traverse();
 }
 
-// B-tree constructor
+// Constructor para inicializar un árbol B
 BTree::BTree(int t) {
     this->t = t;
     root = nullptr;
 }
 
-// Insert a key into the B-tree
+// Inserta una nueva clave en el árbol B
 void BTree::insert(int k) {
     if (root == nullptr) {
         root = new BTreeNode(t, true);
@@ -80,7 +81,7 @@ void BTree::insert(int k) {
     }
 }
 
-// Insert a key into a non-full B-tree node
+// Inserta una nueva clave en el árbol B no lleno
 void BTreeNode::insertNonFull(int k) {
     int i = numKeys - 1;
 
@@ -106,7 +107,7 @@ void BTreeNode::insertNonFull(int k) {
     }
 }
 
-// Split a child node of a B-tree node
+// Dividir el hijo de un nodo de árbol B
 void BTreeNode::splitChild(int i, BTreeNode *y) {
     BTreeNode *z = new BTreeNode(y->t, y->isLeaf);
     z->numKeys = t - 1;
@@ -133,7 +134,7 @@ void BTreeNode::splitChild(int i, BTreeNode *y) {
     numKeys++;
 }
 
-// Traverse the B-tree
+// Recorre el árbol B
 void BTree::traverse() {
     if (root != nullptr)
         root->traverse();
@@ -141,7 +142,7 @@ void BTree::traverse() {
 
 
 int main() {
-    BTree tree(3); // B-tree with minimum degree 3
+    BTree tree(3); // Árbol B con grado mínimo 3
 
     int keys[] = {10, 20, 5, 6, 12, 30, 7, 17};
     int n = sizeof(keys) / sizeof(keys[0]);
@@ -149,7 +150,7 @@ int main() {
     for (int i = 0; i < n; i++)
         tree.insert(keys[i]);
 
-    cout << "Traversal of the B-tree: ";
+    cout << "Recorrido del árbol B: ";
     tree.traverse();
     cout << endl;
 

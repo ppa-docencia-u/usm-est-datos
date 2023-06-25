@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// Nodo del árbol AVL
 class AVLNode {
 public:
     int key;
@@ -17,6 +18,7 @@ public:
     }
 };
 
+// Árbol AVL
 class AVLTree {
 private:
     AVLNode* root;
@@ -33,6 +35,7 @@ private:
         return getHeight(node->left) - getHeight(node->right);
     }
 
+    // Rota a la derecha el subárbol con raíz en y
     AVLNode* rotateRight(AVLNode* y) {
         AVLNode* x = y->left;
         AVLNode* T2 = x->right;
@@ -46,6 +49,7 @@ private:
         return x;
     }
 
+    // Rota a la izquierda el subárbol con raíz en x
     AVLNode* rotateLeft(AVLNode* x) {
         AVLNode* y = x->right;
         AVLNode* T2 = y->left;
@@ -59,6 +63,7 @@ private:
         return y;
     }
 
+    // Inserta un nodo en el árbol AVL
     AVLNode* insertNode(AVLNode* node, int key) {
         if (node == nullptr)
             return new AVLNode(key);
@@ -93,6 +98,8 @@ private:
         return node;
     }
 
+    // Recorrido en orden simétrico del árbol AVL
+    // (imprime los nodos en orden ascendente)
     void inorderTraversal(AVLNode* node) {
         if (node != nullptr) {
             inorderTraversal(node->left);
@@ -126,7 +133,7 @@ int main() {
     avlTree.insert(60);
     avlTree.insert(70);
 
-    cout << "Inorder Traversal: ";
+    cout << "Recorrido en orden simétrico (Inorder Traversal): ";
     avlTree.inorder();
 
     return 0;
